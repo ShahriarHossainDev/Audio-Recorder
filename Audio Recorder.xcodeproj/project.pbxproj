@@ -56,15 +56,95 @@
 		FA55C24029D2EBFB0030BA54 /* Audio Recorder */ = {
 			isa = PBXGroup;
 			children = (
-				FA55C24129D2EBFB0030BA54 /* AppDelegate.swift */,
-				FA55C24329D2EBFB0030BA54 /* SceneDelegate.swift */,
+				FA55C25A29D2ED1A0030BA54 /* Application */,
+				FA55C25929D2ED0D0030BA54 /* Constant */,
+				FA55C25829D2ED030030BA54 /* Extenstions */,
+				FA55C25729D2ECF60030BA54 /* Serecns */,
+				FA55C25629D2ECE70030BA54 /* Storyboard */,
+				FA55C25529D2ECD60030BA54 /* Resourecs */,
 				FA55C24529D2EBFB0030BA54 /* ViewController.swift */,
-				FA55C24729D2EBFB0030BA54 /* Main.storyboard */,
-				FA55C24A29D2EBFD0030BA54 /* Assets.xcassets */,
-				FA55C24C29D2EBFD0030BA54 /* LaunchScreen.storyboard */,
 				FA55C24F29D2EBFD0030BA54 /* Info.plist */,
 			);
 			path = "Audio Recorder";
+			sourceTree = "<group>";
+		};
+		FA55C25529D2ECD60030BA54 /* Resourecs */ = {
+			isa = PBXGroup;
+			children = (
+				FA55C24A29D2EBFD0030BA54 /* Assets.xcassets */,
+			);
+			path = Resourecs;
+			sourceTree = "<group>";
+		};
+		FA55C25629D2ECE70030BA54 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FA55C24729D2EBFB0030BA54 /* Main.storyboard */,
+				FA55C24C29D2EBFD0030BA54 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		FA55C25729D2ECF60030BA54 /* Serecns */ = {
+			isa = PBXGroup;
+			children = (
+				FA55C25B29D2ED360030BA54 /* Audio View */,
+			);
+			path = Serecns;
+			sourceTree = "<group>";
+		};
+		FA55C25829D2ED030030BA54 /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extenstions;
+			sourceTree = "<group>";
+		};
+		FA55C25929D2ED0D0030BA54 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		FA55C25A29D2ED1A0030BA54 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				FA55C24129D2EBFB0030BA54 /* AppDelegate.swift */,
+				FA55C24329D2EBFB0030BA54 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		FA55C25B29D2ED360030BA54 /* Audio View */ = {
+			isa = PBXGroup;
+			children = (
+				FA55C25E29D2ED6A0030BA54 /* ViewModel */,
+				FA55C25D29D2ED620030BA54 /* Model */,
+				FA55C25C29D2ED5C0030BA54 /* View */,
+			);
+			path = "Audio View";
+			sourceTree = "<group>";
+		};
+		FA55C25C29D2ED5C0030BA54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA55C25D29D2ED620030BA54 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA55C25E29D2ED6A0030BA54 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +377,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -325,6 +406,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
