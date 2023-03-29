@@ -20,6 +20,7 @@ class AudioViewController: UIViewController, AVAudioRecorderDelegate {
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
     
+    private let cellIdentifier: String = "audioCell"
     
     var numberOfRercords: Int = 0
     
@@ -30,6 +31,10 @@ class AudioViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        audioTableView.delegate = self
+        audioTableView.dataSource = self
+        
+        self.audioTableView.register(UINib(nibName: "AudioTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         // Do any additional setup after loading the view.
         if let number: Int = UserDefaults.standard.object(forKey: "MyNumber") as? Int {
             numberOfRercords = number
@@ -59,12 +64,29 @@ class AudioViewController: UIViewController, AVAudioRecorderDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    @objc func shareButtonTapped(_ sender: UIButton) {
+        // get the index path of the cell containing the tapped button
+        guard let cell = sender.superview?.superview as? AudioTableViewCell,
+              let indexPath = audioTableView.indexPath(for: cell) else {
+                  return
+              }
+        
+        // get the URL of the recording file
+        let fileURL = getDirectory().appendingPathComponent("recording \(indexPath.row + 1).m4a")
+        
+        // create the activity view controller and set up the items to share
+        let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = sender
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
+    
     // MARK: - IBAction
     @IBAction func playButtonAction(_ sender: UIButton) {
         //check if we have active recorder
         if audioRecorder == nil {
             numberOfRercords += 1
-            let fileName = getDirectory().appendingPathComponent("\(numberOfRercords).m4a")
+            let fileName = getDirectory().appendingPathComponent("recording \(numberOfRercords).m4a")
             
             let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 1200, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
             
@@ -88,7 +110,7 @@ class AudioViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func shareButtonActon(_ sender: UIButton) {
-        let activity = UIActivityViewController(activityItems: [audioPlayer as Any], applicationActivities: nil)
+        let activity = UIActivityViewController(activityItems: [audioPlayer!], applicationActivities: nil)
         activity.popoverPresentationController?.sourceView = self.view
         
         self.present(activity, animated: true, completion: nil)
@@ -104,19 +126,53 @@ extension AudioViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = String(indexPath.row + 1)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? AudioTableViewCell {
+            cell.titleLabel.text = "recording " + String(indexPath.row + 1) + ".m4a"
+            
+            cell.shareButton.addTarget(self, action: #selector(shareButtonTapped(_:)), for: .touchUpInside)
+            return cell
+        }
+        return UITableViewCell()
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let path = getDirectory().appendingPathComponent("\(indexPath.row + 1).m4a")
+        let path = getDirectory().appendingPathComponent("recording \(indexPath.row + 1).m4a")
         
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: path)
             audioPlayer.play()
         } catch {
-            
+            displayAlert(title: "OOPS", message: "Recorder failed")
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let path = getDirectory().appendingPathComponent("recording \(indexPath.row + 1).m4a")
+        
+        if editingStyle == .delete {
+            do {
+                if FileManager.default.fileExists(atPath: path.path) {
+                    try FileManager.default.removeItem(at: path)
+                    numberOfRercords -= 1
+                    audioTableView.deleteRows(at: [indexPath], with: .automatic)
+                    UserDefaults.standard.set(numberOfRercords, forKey: "MyNumber")
+                    audioTableView.reloadData()
+                } else {
+                    displayAlert(title: "OOPS", message: "File not found")
+                }
+            } catch {
+                displayAlert(title: "OOPS", message: "Delete failed")
+                print(error.localizedDescription)
+            }
         }
     }
 }

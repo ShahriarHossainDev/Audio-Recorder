@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA40BBBE29D3F38400C91617 /* AudioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40BBBC29D3F38400C91617 /* AudioTableViewCell.swift */; };
+		FA40BBBF29D3F38400C91617 /* AudioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA40BBBD29D3F38400C91617 /* AudioTableViewCell.xib */; };
 		FA55C24229D2EBFB0030BA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55C24129D2EBFB0030BA54 /* AppDelegate.swift */; };
 		FA55C24429D2EBFB0030BA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55C24329D2EBFB0030BA54 /* SceneDelegate.swift */; };
 		FA55C24929D2EBFB0030BA54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA55C24729D2EBFB0030BA54 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA40BBBC29D3F38400C91617 /* AudioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTableViewCell.swift; sourceTree = "<group>"; };
+		FA40BBBD29D3F38400C91617 /* AudioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioTableViewCell.xib; sourceTree = "<group>"; };
 		FA55C23E29D2EBFB0030BA54 /* Audio Recorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Audio Recorder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA55C24129D2EBFB0030BA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA55C24329D2EBFB0030BA54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA40BBBB29D3F36100C91617 /* Custome Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FA40BBBC29D3F38400C91617 /* AudioTableViewCell.swift */,
+				FA40BBBD29D3F38400C91617 /* AudioTableViewCell.xib */,
+			);
+			path = "Custome Cell";
+			sourceTree = "<group>";
+		};
 		FA55C23529D2EBFB0030BA54 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +141,7 @@
 		FA55C25C29D2ED5C0030BA54 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA40BBBB29D3F36100C91617 /* Custome Cell */,
 				FA55C25F29D2F0990030BA54 /* AudioViewController.swift */,
 			);
 			path = View;
@@ -205,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA40BBBF29D3F38400C91617 /* AudioTableViewCell.xib in Resources */,
 				FA55C24E29D2EBFD0030BA54 /* LaunchScreen.storyboard in Resources */,
 				FA55C24B29D2EBFD0030BA54 /* Assets.xcassets in Resources */,
 				FA55C24929D2EBFB0030BA54 /* Main.storyboard in Resources */,
@@ -218,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA40BBBE29D3F38400C91617 /* AudioTableViewCell.swift in Sources */,
 				FA55C26029D2F0990030BA54 /* AudioViewController.swift in Sources */,
 				FA55C24229D2EBFB0030BA54 /* AppDelegate.swift in Sources */,
 				FA55C24429D2EBFB0030BA54 /* SceneDelegate.swift in Sources */,
